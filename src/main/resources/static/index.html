@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>eCFR Snapshot Metrics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>eCFR Title 1 Snapshot Metrics</h1>
+
+    <button id="downloadBtn">Download Latest Snapshot</button>
+    <span id="downloadStatus"></span>
+
+    <h2>Metrics Comparison</h2>
+    <table id="metricsTable">
+      <thead>
+        <tr>
+          <th>Snapshot</th>
+          <th>Word Count</th>
+          <th>Unique Terms</th>
+          <th>Avg Sentence Length</th>
+          <th>Checksum</th>
+          <th>Word Count Change</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
