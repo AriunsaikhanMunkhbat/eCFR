@@ -55,6 +55,11 @@ This folder will store:
 
 The application will start on http://localhost:8080/
 
+Screenshot 
+![Main Dashboard](Dashboard.png)
+
+![After Download](After_Download.png)
+
 ---
 
 Implementation Approach/Explaination:
