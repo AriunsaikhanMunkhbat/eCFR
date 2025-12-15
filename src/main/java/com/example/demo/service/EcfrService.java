@@ -24,7 +24,7 @@ public class EcfrService {
     private final Path previousFile;
 
     public EcfrService(AnalysisService analysis,
-                       @Value("${ecfr.storage.dir}") String storageDir) throws IOException {
+                       @Value("${ecfr.storage.dir}") String storageDir) throws IOException { //See ecfr.storage.dir value in application.properties.
         this.analysis = analysis;
 
         Path storagePath = Paths.get(storageDir);
@@ -44,7 +44,8 @@ public class EcfrService {
 
         System.out.println(">>> before HTTP call");
 
-        URL url = new URL("https://www.ecfr.gov/api/versioner/v1/versions/title-1.json");
+        URL url = new URL("https://www.ecfr.gov/api/versioner/v1/versions/title-1.json"); // URL can be parameterized to add remaining Titles
+
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -71,8 +72,6 @@ public class EcfrService {
         Files.writeString(currentFile, json, StandardCharsets.UTF_8);
         System.out.println(">>> current.json written");
     }
-
-
 
     public SnapshotMetrics metrics(Path file) throws IOException {
         String json = Files.readString(file, StandardCharsets.UTF_8);

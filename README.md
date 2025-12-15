@@ -1,94 +1,63 @@
-# eCFR Simple Spring Boot Project
+ USDS eCFR Simple SpringBoot Project
 
-This project is a **minimal Java Spring Boot application** that downloads Title 1 from the **Electronic Code of Federal Regulations (eCFR) API**, stores it server-side as JSON, and provides APIs to retrieve and analyze the data.
-
----
-
-## Features
-
-- Download **Title 1** eCFR data from the official API.
-- Store **current** and **previous** snapshots in the `data/` folder.
-- Analyze the data for:
-  - Word count
-  - Unique terms
-  - Average sentence length
-  - SHA-256 checksum
-- Minimal front-end with:
-  - `index.html`
-  - `style.css`
-  - `app.js` in `/static/` folder
-- Simple REST endpoints:
-  - **POST** `/api/download` — download Title 1 (saves previous snapshot)
-  - **GET** `/api/current` — retrieve current snapshot metrics
-  - **GET** `/api/previous` — retrieve previous snapshot metrics
+This project is a simple Java SpringBoot application that downloads Title 1 from the eCFR API, stores it server-side as JSON, and provides APIs to retrieve and analyze the data.
 
 ---
 
-## Technology Stack
+Features
 
-- **Java 17** (or compatible)
-- **Spring Boot 3.x**
-- **Maven** for build management
-- No database required (server-side storage is file-based)
-- Minimal front-end (HTML, CSS, JS)
+- Download eCFR data from the official API.
+
+- Store current and previous snapshots in the data folder.
+
+- Analyze the data for: word count, 
+                        unique terms, 
+                        average sentence length
+                        SHA-256 checksum
+
+- Front end UI includes index.html, style.css and app.js in resources/static/ folder
+
+- REST endpoints are POST and GET
+                        POST -> /api/download #it simply downloads the Title 1 and saves the previous snapshot)
+                        GET -> /api/current #retrieve current data 
+                        GET -> /api/previous # retrieve previous data
+
+----
+
+This project uses: Java 16, SpringBoot 2.7, Maven 3.11 and uses no Database   #See pom.xml for details 
 
 ---
 
-## Setup & Run
 
-1. **Clone the repository**
+Setup & Run
 
-```bash
-git clone <repository-url>
-cd ecfr-simple
+- Clone the repository
+
+git clone https://github.com/eUSDSRecruiting/Ariunsaikhan-M-s-Take-Home-Assessment.git 
 
 
-2. Configure storage directory
+- Configure storage directory
 
 Set the storage directory in src/main/resources/application.properties:
-
-ecfr.storage.dir=./data
-
+      
+      ecfr.storage.dir=./data
 
 This folder will store:
+      current.json — latest download
+      previous.json — previous snapshot
 
-current.json — latest download
-previous.json — previous snapshot
-
-3. Build the application
+- Build the application
     mvn clean install
 
 
-4. Run the application
+- Run the application
     mvn spring-boot:run
 
 The application will start on http://localhost:8080/
 
 
 
-## Justification
+Implementation Approach/Explaination:
 
-1. **Title 1 as representative dataset**  
-   - Title 1 (“General Provisions”) provides a structured but manageable dataset to demonstrate the required functionality.  
-   - It contains multiple sections and parts, which is sufficient to showcase metrics like word count, unique terms, average sentence length, and checksum.  
-   - The same architecture can easily be extended to additional titles or agencies.
-
-2. **No database used**  
-   - The instructions allow storing data server-side.  
-   - Using local JSON files (`current.json` and `previous.json`) keeps the project simple, eliminates database setup, and satisfies the requirement to store snapshots.
-
-3. **No Angular / minimal front-end**  
-   - A lightweight front-end with `index.html`, `style.css`, and `app.js` in the Spring Boot `/static/` folder is sufficient to trigger downloads and view metrics.  
-   - This keeps the project easy to understand and maintain, focusing on the required functionality.
-
-4. **Custom metric support**  
-   - The architecture supports custom metrics via `AnalysisService`.  
-   - Additional metrics (e.g., frequent terms, change in word count) can be added without modifying the core pipeline.
-
-5. **Compliance with assessment requirements**  
-   - The project demonstrates:  
-     - Downloading current eCFR data.  
-     - Storing server-side snapshots.  
-     - Providing APIs for retrieving metrics.  
-     - Displaying metrics in a simple UI.  
-   - The solution is **minimal, understandable, and fully functional**, meeting the core assessment objectives.
+For this assessment, I chose to work with Title 1 of the eCFR because it is well organized and large enough to demonstrate the required functionality without making the project too complex. Title 1 includes multiple sections and parts, which makes it a good candidate for analyzing metrics such as word count, unique terms, average sentence length, and checksums. This approach can also be expanded later to include additional titles or agencies if needed.
+When choosing tools, I did consider using Python and related development tools; however, I had previously worked on a Spring Boot project using Java for a graduate school project, which made me more familiar and comfortable with that stack. Because of that experience, I decided to use Java and Spring Boot so I could focus more on the problem itself rather than learning a new framework at the same time. In general, I decided to keep the solution simple enough to understand quickly while still being easy to extend with additional metrics or features in the future. Given the time constraints and scope of a take-home assessment, I focused on building a solid working foundation. There is still plenty of room for improvement, and this is something I would expect to refine further through team discussions and collaboration around design decisions and future direction.
