@@ -56,9 +56,9 @@ This folder will store:
 The application will start on http://localhost:8080/
 
 Screenshot 
-![Main Dashboard](Screenshots/Dashboard.png)
+![Main Dashboard](screenshots/Dashboard.png)
 
-![After Download](Screenshots/After_Download.png)
+![After Download](screenshots/After_Download.png)
 
 ---
 
