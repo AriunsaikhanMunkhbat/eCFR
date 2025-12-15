@@ -55,7 +55,7 @@ This folder will store:
 
 The application will start on http://localhost:8080/
 
-
+---
 
 Implementation Approach/Explaination:
 
